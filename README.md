@@ -4,6 +4,8 @@ paragraph
 
 ## Team Members
 
+The roles are placeholder for now and will be finalized after discussion.
+
 | Name    | Roles           |
 |---------|-----------------|
  | Hannan  | lead            |

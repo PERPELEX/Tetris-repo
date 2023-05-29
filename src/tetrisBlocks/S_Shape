@@ -1,0 +1,13 @@
+package TetrisBlocks;
+
+import tetrisGame.TetrisBlock;
+import java.awt.Color;
+
+public class S_Shape extends TetrisBlock {
+    public S_Shape(){
+        super(new int[][]{{0,1,1}
+                         ,{1,1,0}}
+                        ,Color.GREEN);
+    }
+    
+}

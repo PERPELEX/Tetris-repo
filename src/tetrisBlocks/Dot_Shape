@@ -1,0 +1,11 @@
+package TetrisBlocks;
+
+import tetrisGame.TetrisBlock;
+import java.awt.Color;
+
+public class Dot_Shape extends TetrisBlock {
+    public Dot_Shape(){
+        super(new int[][]{{1}}
+                          ,Color.BLACK);
+    }
+}

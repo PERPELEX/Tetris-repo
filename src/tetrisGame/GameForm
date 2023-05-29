@@ -1,0 +1,257 @@
+package tetrisGame;
+
+import java.awt.event.ActionEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.AbstractAction;
+import javax.swing.InputMap;
+import javax.swing.ActionMap;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
+public class GameForm extends JFrame {
+    
+    private static LeaderboardForm lf;
+    private GameThread gt;
+    private GameArea ga;
+    public GameForm() {
+        initComponents();
+        ga=new GameArea(gameAreaPlaceHolder,10);
+        this.add( ga);
+        
+        initControls();
+    }
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        gameAreaPlaceHolder = new javax.swing.JPanel();
+        scoreDisplay = new javax.swing.JLabel();
+        levelDisplay = new javax.swing.JLabel();
+        btnMainMenu = new javax.swing.JButton();
+        togBtnPause = new javax.swing.JToggleButton();
+        btnEnd = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBounds(new java.awt.Rectangle(0, 0, 0, 0));
+        setResizable(false);
+
+        gameAreaPlaceHolder.setBackground(new java.awt.Color(0, 153, 153));
+        gameAreaPlaceHolder.setBorder(new javax.swing.border.MatteBorder(null));
+        gameAreaPlaceHolder.setPreferredSize(new java.awt.Dimension(295, 411));
+
+        javax.swing.GroupLayout gameAreaPlaceHolderLayout = new javax.swing.GroupLayout(gameAreaPlaceHolder);
+        gameAreaPlaceHolder.setLayout(gameAreaPlaceHolderLayout);
+        gameAreaPlaceHolderLayout.setHorizontalGroup(
+            gameAreaPlaceHolderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 289, Short.MAX_VALUE)
+        );
+        gameAreaPlaceHolderLayout.setVerticalGroup(
+            gameAreaPlaceHolderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 463, Short.MAX_VALUE)
+        );
+
+        scoreDisplay.setBackground(new java.awt.Color(51, 51, 51));
+        scoreDisplay.setFont(new java.awt.Font("Game Of Squids", 1, 18)); // NOI18N
+        scoreDisplay.setForeground(new java.awt.Color(153, 0, 255));
+        scoreDisplay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        scoreDisplay.setText("Score : 0");
+        scoreDisplay.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        scoreDisplay.setFocusable(false);
+
+        levelDisplay.setBackground(new java.awt.Color(0, 153, 153));
+        levelDisplay.setFont(new java.awt.Font("Game Of Squids", 1, 18)); // NOI18N
+        levelDisplay.setForeground(new java.awt.Color(153, 0, 255));
+        levelDisplay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        levelDisplay.setText("Level # 1");
+        levelDisplay.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+
+        btnMainMenu.setBackground(new java.awt.Color(0, 51, 51));
+        btnMainMenu.setFont(new java.awt.Font("Game Of Squids", 1, 18)); // NOI18N
+        btnMainMenu.setForeground(new java.awt.Color(153, 255, 204));
+        btnMainMenu.setText("Main Menu");
+        btnMainMenu.setAlignmentY(0.0F);
+        btnMainMenu.setAutoscrolls(true);
+        btnMainMenu.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnMainMenu.setFocusable(false);
+        btnMainMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMainMenuActionPerformed(evt);
+            }
+        });
+
+        togBtnPause.setBackground(new java.awt.Color(0, 51, 51));
+        togBtnPause.setFont(new java.awt.Font("Game Of Squids", 1, 18)); // NOI18N
+        togBtnPause.setForeground(new java.awt.Color(153, 255, 204));
+        togBtnPause.setText("pause");
+        togBtnPause.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        togBtnPause.setFocusable(false);
+        togBtnPause.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                togBtnPauseActionPerformed(evt);
+            }
+        });
+
+        btnEnd.setBackground(new java.awt.Color(0, 51, 51));
+        btnEnd.setFont(new java.awt.Font("Game Of Squids", 1, 18)); // NOI18N
+        btnEnd.setForeground(new java.awt.Color(153, 255, 204));
+        btnEnd.setText("End");
+        btnEnd.setAlignmentY(0.0F);
+        btnEnd.setAutoscrolls(true);
+        btnEnd.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnEnd.setFocusable(false);
+        btnEnd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEndActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnMainMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(togBtnPause, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(gameAreaPlaceHolder, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scoreDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                    .addComponent(levelDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(gameAreaPlaceHolder, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(scoreDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)
+                        .addComponent(levelDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addComponent(btnMainMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(togBtnPause, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)
+                        .addComponent(btnEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        togBtnPause.getAccessibleContext().setAccessibleDescription("");
+
+        pack();
+        setLocationRelativeTo(null);
+    }// </editor-fold>                        
+
+    private void btnMainMenuActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        gt.interrupt();
+        TetrisGame.gameOver(gt.getScore());
+        TetrisGame.showStartup();
+        TetrisGame.removeLeaderboard();
+    }                                           
+
+    private void togBtnPauseActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        
+        if(togBtnPause.isSelected()) {
+            gt.suspend();
+        }
+            
+        else{
+            gt.resume();
+        }
+    }                                           
+
+    private void btnEndActionPerformed(java.awt.event.ActionEvent evt) {                                       
+        gt.interrupt();
+        TetrisGame.gameOver(gt.getScore());
+    }                                      
+
+    
+    private void initControls(){
+        InputMap im = this.getRootPane().getInputMap();
+        ActionMap am = this.getRootPane().getActionMap();
+        
+        im.put(KeyStroke.getKeyStroke("RIGHT"),"right");
+        im.put(KeyStroke.getKeyStroke("D"),"right");
+        im.put(KeyStroke.getKeyStroke("LEFT"),"left");
+        im.put(KeyStroke.getKeyStroke("A"),"left");
+        im.put(KeyStroke.getKeyStroke("UP"),"up");
+        im.put(KeyStroke.getKeyStroke("W"),"up");
+        im.put(KeyStroke.getKeyStroke("DOWN"),"down");
+        im.put(KeyStroke.getKeyStroke("S"),"down");
+        
+        
+        am.put("right", new AbstractAction(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ga.movBlockRight();
+            }
+        
+    });
+        
+        am.put("left", new AbstractAction(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ga.movBlockLeft();
+            }
+        
+    });
+        
+        am.put("up", new AbstractAction(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ga.rotateBlock();
+            }
+        
+    });
+        
+        am.put("down", new AbstractAction(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ga.dropBlock();
+            }
+        
+    });
+
+    }
+    
+    public void startGame(){
+        ga.initBackgroundArray();
+        gt = new GameThread(ga,this);
+        gt.start();
+    }
+    
+    public void updateScore(int score){
+        scoreDisplay.setText("Score : "+score);
+    }
+    
+    public void updateLevel(int level){
+        levelDisplay.setText("Level # "+level);
+    }
+    
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new GameForm().setVisible(true);
+            }
+        });
+    }
+    // Variables declaration - do not modify                     
+    private javax.swing.JButton btnEnd;
+    private javax.swing.JButton btnMainMenu;
+    private javax.swing.JPanel gameAreaPlaceHolder;
+    private javax.swing.JLabel levelDisplay;
+    private javax.swing.JLabel scoreDisplay;
+    private javax.swing.JToggleButton togBtnPause;
+    // End of variables declaration                   
+}
